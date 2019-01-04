@@ -1,4 +1,17 @@
 body{
+     color: #000;
+     line-height: normal;
+     font-family: Arial,Arial,Helvetica,Sans-Serif;
+     font-size: small;
+     font-style: normal;
+     font-variant: normal;
+     font-weight: normal;
+     min-width: 987px;
+     margin: 0;
+     margin-left: 20px;
+ }
+
+.card{
     color: #000;
     line-height: normal;
     font-family: Arial,Arial,Helvetica,Sans-Serif;
@@ -10,6 +23,7 @@ body{
     margin: 0;
     margin-left: 20px;
 }
+
 div {
     display: block;
 }
@@ -68,7 +82,7 @@ ol{
 }
 
 .type_name{
-    width: 35px;
+    width: 40px;
     font-size: 93%;
     background-color: #aaa;
     color: #fff;
