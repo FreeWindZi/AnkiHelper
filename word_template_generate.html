@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+
+    <script type="text/javascript">
+        var num = 0;
+        
+        function addExample(var1) {
+            
+            var htmlText = "" +
+                "<div class=example>\n" +
+                "     <input>\n" +
+                "</div>";
+            return htmlText;
+        }
+
+        function addDefinition() {
+            var htmlText = "" +
+                "<div class=example>\n" +
+                "     <input>\n" +
+                "</div>";
+            return htmlText;
+        }
+        
+        function addWordType() {
+
+        var htmlText = "<div class=\"definition\">\n" +
+            "                <input>\n" +
+            "                <button onclick='addExample(this)'>添加例句</button>\n" +
+            "                <div class=\"example\">\n" +
+            "                    <input>\n" +
+            "                </div>\n" +
+            "                <div class=\"example\">\n" +
+            "                    <input>\n" +
+            "                </div>\n" +
+            "            </div>";
+        $("#type_container")[0].innerHTML += htmlText;
+    }
+</script>
+
+</head>
+<body>
+<div class="container">
+
+
+    <div>
+        <div class="vocabulary">
+            单词：<input type="text" name="word">
+            <button onclick="addWordType()">添加类型</button>
+        </div>
+    </div>
+
+    <div id="type_container">
+    </div>
+
+
+    <div class="word_finish">
+        <input type="button" onclick="" value="Submit">
+    </div>
+
+
+</div>
+</body>
+</html>
