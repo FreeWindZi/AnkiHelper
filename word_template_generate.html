@@ -87,11 +87,16 @@
     </style>
 
     <script type="text/javascript">
+
+        $(document).ready(function(){
+            alert("sdasd");
+        });
         function addExample(button) {
             var htmlText = "" +
                 "<div class=example_seg>\n" +
                 "     <textarea placeholder = '例句'></textarea>" +
                 "</div>";
+            button.parent().
             button.parentNode.innerHTML += htmlText;
         }
 
