@@ -203,7 +203,7 @@
             definition.meaning = $(word_meaning).val();
             definition.examples = [];
 
-            var word_meaning_examples = $(definition_seg).children(".example_seg .word_meaning_example");
+            var word_meaning_examples = $(definition_seg).find(".example_seg .word_meaning_example");
             var length = word_meaning_examples.length;
             for (var i = 0; i < length; i++){
                 addExampleValue(word_meaning_examples[i], definition)
@@ -213,7 +213,7 @@
         function addExampleValue(word_meaning_example, definition) {
             var example = {};
             example.content = $(word_meaning_example).val()
-            definition.push(example);
+            definition.examples.push(example);
         }
         function onFinish() {
             var word = {};
@@ -227,7 +227,6 @@
             //     addTypeValue(this, word);
             // });
             var json = JSON.stringify(word);
-            console.log(word);
             console.log(json);
         }
 

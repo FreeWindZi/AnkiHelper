@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="vocabulary.css" type="text/css">
+    <script type="text/javascript" src="vocabulary.js"></script>
+
+</head>
+<body>
+
+
+<div id = "word">
+    <div class=" header">
+        <h1>{{ name }}</h1>
+    </div>
+
+    <!--<div class="phonetic_container">-->
+        <!--英式{{BrEPhonetic}}&emsp; {{BrEPron}} <br>-->
+        <!--美式{{AmEPhonetic}}&emsp; {{AmEPron}}-->
+    <!--</div>-->
+
+    <!--<div class="image">-->
+        <!--{{图片}}-->
+    <!--</div>-->
+
+    <div class="container">
+
+        <div class="vocabulary_container">
+            <div class="vocabulary">
+                <span>{{ name }}</span>
+            </div>
+            <div class="show_example" id="show_example" onclick="ExampleSwitch(this)">
+                <span>Show example</span>
+            </div>
+        </div>
+
+
+
+        <div class="type_seg" v-for ="type in types">
+            <div class="vocabulary_type">
+                <div class="type_name">{{ type.name }}</div>
+                <!--<div class="type_open" id="sh">-->
+                <!--<a onclick="SenseCollectionSwitch(this, 'pos_0', 'idiom_0')" href="javascript:void(0);"></a>-->
+                <!--</div>-->
+            </div>
+            <ol>
+                <li v-for = "definition in type.definitions">
+                    <div class="definition_seg">
+                        <div class="definition">
+                            <span>{{ definition.meaning }}</span>
+                        </div>
+                        <ul>
+                            <li v-for = "example in definition.examples">
+                                <div class="example">
+                                    <span>{{example.content}}</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+            </ol>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    new Vue({
+        el: '#word',
+        data: {"name":"1","types":[{"name":"2","definitions":[{"meaning":"88","examples":[{"content":"rwerw"},{"content":"werwerwer"}]},{"meaning":"88","examples":[]}]},{"name":"3","definitions":[{"meaning":"werwer","examples":[]}]}]}
+    });
+</script>
+</body>
+</html>
