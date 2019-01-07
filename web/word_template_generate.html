@@ -226,6 +226,11 @@
             //     addTypeValue(this, word);
             // });
             var json = JSON.stringify(word);
+
+
+
+            $.post("save", word);
+            //window.open("word.html?word=" + json )
             console.log(json);
         }
 
