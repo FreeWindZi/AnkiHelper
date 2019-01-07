@@ -11,23 +11,21 @@ import java.io.File;
 import java.io.IOException;
 
 @WebServlet("/save")
-public class SaveSerlet extends HttpServlet {
+public class SaveServlet extends HttpServlet {
 
     File wordDir = new File("words");
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
-
         String word = req.getParameter("name");
-        String content = req.getParameter("types");
+        String content = req.getParameter("content");
         File file = new File(wordDir, word + ".json");
         FileUtils.save(file, content);
-        resp.sendRedirect(req.getContextPath() + "word.html?word=" + word);
+        resp.getWriter().println("true");
     }
 }

@@ -227,11 +227,15 @@
             // });
             var json = JSON.stringify(word);
 
+            var data = {};
+            data.name = word;
+            data.content = json;
 
-
-            $.post("save", word);
-            //window.open("word.html?word=" + json )
-            console.log(json);
+            $.post("/save", data, function (success) {
+                if (success){
+                    window.open("/word.html?word=" + word.name )
+                }
+            });
         }
 
 

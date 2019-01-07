@@ -10,7 +10,7 @@ public class FileUtils {
         }
 
         if (file.exists()){
-            file.exists();
+            file.delete();
         }
         file.createNewFile();
         FileWriter fw = new FileWriter(file);
