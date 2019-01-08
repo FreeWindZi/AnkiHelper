@@ -228,12 +228,12 @@
             var json = JSON.stringify(word);
 
             var data = {};
-            data.name = word;
+            data.word = word.name;
             data.content = json;
 
             $.post("/save", data, function (success) {
                 if (success){
-                    window.open("/word.html?word=" + word.name )
+                    window.open("./word.html?word=" + word.name )
                 }
             });
         }

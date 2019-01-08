@@ -13,16 +13,25 @@ import java.io.IOException;
 @WebServlet("/save")
 public class SaveServlet extends HttpServlet {
 
-    File wordDir = new File("words");
+    File wordDir = null;
+
+    public SaveServlet() {
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        resp.getWriter().println("I am SaveServlet");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String word = req.getParameter("name");
+        if (wordDir == null){
+           wordDir =  new File(this.getServletContext().getRealPath("/word"));
+        }
+        if (!wordDir.exists()){
+            wordDir.mkdirs();
+        }
+        String word = req.getParameter("word");
         String content = req.getParameter("content");
         File file = new File(wordDir, word + ".json");
         FileUtils.save(file, content);
