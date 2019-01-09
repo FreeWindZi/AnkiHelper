@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
@@ -209,14 +209,14 @@
         }
 
 
-        function addWordType() {
+        function addWordType(typeName) {
 
             var htmlText = "<div class=\"type_seg\">\n" +
-                "                <input placeholder='词性' class='word_type' value=''>\n" +
+                "                <input placeholder='词性' class='word_type' value='{0}'>\n" +
                 "                <button onclick='addDefinition(this)'>添加释义</button>\n" +
                 "                <button class='deleteBtn' onclick='onDelete(this)'>词性删除</button>\n" +
                 "            </div>";
-
+            htmlText = htmlText.format(typeName);
             addNode($("#type_container")[0], htmlText);
         }
 
@@ -281,9 +281,7 @@
             });
         }
 
-
-        var word = getQueryString("word");
-        if (word != null) {
+        function updateUI(word) {
             $.ajax({
                 url: "/AnkiWords/" + word + ".json",
                 async: true,
@@ -297,10 +295,30 @@
                 }
             });
             function pushDom(jsondata) {
-                $("#word").val(jsondata.name);
-
+                var vm = new Vue({
+                    el: '#word_container',
+                    data: {
+                        word : jsondata
+                    }
+                });
             };
         }
+
+
+
+
+        var word = getQueryString("word");
+        if (word != null) {
+            updateUI(word);
+        }
+
+        function searchWord() {
+            var word = $("#word").val();
+            if (word != null){
+                updateUI(word);
+            }
+        }
+
     </script>
 </head>
 <body>
@@ -308,26 +326,26 @@
 
 
     <div class="vocabulary">
-
-        <input type="text" name="word" id="word" placeholder="单词">
-        <button onclick="addWordType()">添加词性</button>
+        <input type="text" name="word" id="word" placeholder="单词" :value = "word.name" >
+        <button onclick="addWordType('')">添加词性</button>
+        <button onclick="searchWord()">查询单词</button>
     </div>
 
     <div id="type_container">
-        <!--<div class="type_seg" >-->
-            <!--<input placeholder='词性' class='word_type' value="" >-->
-            <!--<button onclick='addDefinition(this)'>添加释义</button>-->
-            <!--<button class='deleteBtn' onclick='onDelete(this)'>词性删除</button>-->
-            <!--<div class="definition_seg" >-->
-                <!--<input placeholder="释义" class="word_meaning" value="" >-->
-                <!--<button onclick="addExample(this)">添加例句</button>-->
-                <!--<button class="deleteBtn" onclick="onDelete(this)">释义删除</button>-->
-                <!--<div class="example_seg" >-->
-                    <!--<textarea placeholder="例句" class="word_meaning_example"></textarea>-->
-                    <!--<button class="deleteBtn" onclick="onDelete(this)">例句删除</button>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
+        <div class="type_seg" v-for="type in word.types">
+            <input placeholder='词性' class='word_type'  :value = "type.name">
+            <button onclick='addDefinition(this)'>添加释义</button>
+            <button class='deleteBtn' onclick='onDelete(this)'>词性删除</button>
+            <div class="definition_seg" v-for="definition in type.definitions">
+                <input placeholder="释义" class="word_meaning" :value = "definition.meaning" >
+                <button onclick="addExample(this)">添加例句</button>
+                <button class="deleteBtn" onclick="onDelete(this)">释义删除</button>
+                <div class="example_seg" v-for="example in definition.examples">
+                    <textarea placeholder="例句" class="word_meaning_example" :value = "example.content"></textarea>
+                    <button class="deleteBtn" onclick="onDelete(this)">例句删除</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 
