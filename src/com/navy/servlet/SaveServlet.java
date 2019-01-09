@@ -26,7 +26,7 @@ public class SaveServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (wordDir == null){
-           wordDir =  new File(this.getServletContext().getRealPath("/word"));
+           wordDir =  new File("E:\\AnkiWords");
         }
         if (!wordDir.exists()){
             wordDir.mkdirs();

@@ -1,0 +1,3 @@
+#虚拟路径 实际路径
+AnkiWords = “E:\AnkiWords”
+        <Context path="/AnkiWords" docBase="E:\AnkiWords" reloadable="true"/>
