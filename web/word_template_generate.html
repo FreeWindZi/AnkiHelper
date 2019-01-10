@@ -280,7 +280,6 @@
                 }
             });
         }
-
         function updateUI(word) {
             $.ajax({
                 url: "/AnkiWords/" + word + ".json",
@@ -298,7 +297,7 @@
                 var vm = new Vue({
                     el: '#word_container',
                     data: {
-                        word : jsondata
+                        word: jsondata
                     }
                 });
             };

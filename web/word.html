@@ -68,6 +68,8 @@
         </div>
 
     </div>
+
+    <textarea  id="word_html" style="margin-top: 20px; width: 50%; height: 40px" ></textarea>
 </div>
 
 
@@ -83,6 +85,7 @@
         dataType: "json",
         success: function (jsondata) {
             pushDom(jsondata);
+            $("#word_html").val($("#container").html());
         }
     });
     
