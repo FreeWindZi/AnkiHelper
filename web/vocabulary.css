@@ -128,10 +128,12 @@ ol{
     font-size: 14px;
     padding-right: .25em;
     line-height: 19px;
+    white-space: pre-line;
 }
 .example{
     line-height: 24px;
     color: #777;
     margin-left: 10px;
+    white-space: pre-line;
 }
 
