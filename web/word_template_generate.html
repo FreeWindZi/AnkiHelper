@@ -28,7 +28,19 @@
             box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
         }
 
-        textarea {
+
+
+
+        .definition_seg textarea{
+            width: 50%;
+            color: #001ba0;
+            font-weight: bold;
+            padding-right: .25em;
+            line-height: 19px;
+            font-size: 16px;
+        }
+
+        .example_seg textarea {
             font-style: oblique;
             font-size: 14px;
             width: 50%;
@@ -336,7 +348,7 @@
             <button onclick='addDefinition(this)'>添加释义</button>
             <button class='deleteBtn' onclick='onDelete(this)'>词性删除</button>
             <div class="definition_seg" v-for="definition in type.definitions">
-                <input placeholder="释义" class="word_meaning" :value = "definition.meaning" >
+                <textarea placeholder="释义" class="word_meaning" :value = "definition.meaning" ></textarea>
                 <button onclick="addExample(this)">添加例句</button>
                 <button class="deleteBtn" onclick="onDelete(this)">释义删除</button>
                 <div class="example_seg" v-for="example in definition.examples">
